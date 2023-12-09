@@ -12,8 +12,8 @@ $requestMethod = $_SERVER['REQUEST_METHOD'];
 if($requestMethod == "GET")
 {
     $inputData = json_decode(file_get_contents("php://input"), true);
-    $user = login($inputData);
-    echo $user;
+    $res = isLoggedIn($inputData);
+    echo $res;
 }
 else
 {

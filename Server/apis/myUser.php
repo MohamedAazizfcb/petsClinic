@@ -12,7 +12,7 @@ $requestMethod = $_SERVER['REQUEST_METHOD'];
 if($requestMethod == "GET")
 {
     $inputData = json_decode(file_get_contents("php://input"), true);
-    $user = login($inputData);
+    $user = myUser($inputData);
     echo $user;
 }
 else
