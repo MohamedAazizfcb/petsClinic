@@ -1,0 +1,21 @@
+<div class="sidebar">
+    <div class="sidebarItem" style="background-color: #b38bff;">
+        <img [src]="imageToShow" style="margin-top: 10px;">
+        <div style="color: whitesmoke;margin-top: 10px;">
+            {{settingsService.user.fullname}}
+        </div>
+    </div>
+    
+    <div class="sidebarItem" routerLink="/auth/signup" routerLinkActive="activeItem">
+        <h5> Manage Users </h5>
+    </div>
+    <div class="sidebarItem" routerLink="/dashboard" routerLinkActive="activeItem">
+        <h5> Dashboard </h5>
+    </div>
+    <div class="sidebarItem" routerLink="/appointments" routerLinkActive="activeItem">
+        <h5> Appointments </h5>
+    </div>
+    <div class="sidebarItem" routerLink="/shops" routerLinkActive="activeItem">
+        <h5> Shops </h5>
+    </div>
+</div>

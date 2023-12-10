@@ -8,8 +8,8 @@ import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-signup',
-  templateUrl: './signup.component.html',
-  styleUrls: ['./signup.component.css']
+  templateUrl: './addUser.component.html',
+  styleUrls: ['./addUser.component.css']
 })
 export class SignupComponent implements OnInit, OnDestroy {
   signupForm: FormGroup;
@@ -53,7 +53,6 @@ export class SignupComponent implements OnInit, OnDestroy {
   }
 
   onFileSelected(event: any) {
-    debugger;
     (event as HTMLInputElement).files[0];
     let f = event.files.item(0);
     this.formData.set('imageData', f);

@@ -1,9 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UserModel } from '../models/user.model';
 @Injectable({providedIn: 'root'})
 export class SettingsService implements OnInit {
     url: string = "";
+    token: string = "";
+    user: UserModel;
     constructor(private httpClient: HttpClient) {}
     ngOnInit(): void {}
 

@@ -1,0 +1,40 @@
+.sidebar{
+    width: 200px;
+    height: 100%;
+    text-align: center;
+    transform: translate(-90%);
+    &:hover{
+        transform: translate(0%);
+    }
+}
+.sidebarItem,.activeItem{
+    margin-top: 10px;
+    position: relative;
+    color: #b38bff;
+    width: 200px;
+    height: 150px;
+    text-align: center;
+    cursor: pointer;
+    opacity: .8;
+    background-color: #222;
+    &:hover{
+        opacity: 1;
+    }
+}
+.activeItem{
+    background-color: #b38bff;
+    color: #222;
+}
+h5{
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-weight: 700;
+}
+img{
+    width: 100px;
+    height: 100px;
+    border-radius: 50px;
+}
