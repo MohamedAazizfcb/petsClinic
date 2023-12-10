@@ -12,8 +12,8 @@ $requestMethod = $_SERVER['REQUEST_METHOD'];
 if($requestMethod == "POST")
 {
     $inputData = $_POST;
-    $res = isLoggedIn($inputData);
-    echo $res;
+    $img = userImage($inputData);
+    echo $img;
 }
 else
 {

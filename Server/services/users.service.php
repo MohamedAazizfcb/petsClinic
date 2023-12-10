@@ -1,6 +1,8 @@
 <?php
 require 'dbConnect.php';
 include ('echos.service.php');
+header('Content-Type: image/jpeg');
+
 define ('SITE_ROOT', realpath(dirname(__FILE__)));
 function generateRandomString($length = 20) {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ$#@%^&*';
@@ -286,10 +288,49 @@ function myUser($inputData){
             $query_result = mysqli_query($conn, $query);
             if($query_result)
             {
-                $imgName = mysqli_fetch_all($query_result, MYSQLI_ASSOC)[0]['imgName'];
-                $records['imgURL'] = $targetDir.$imgName;
                 $data = resultBuilder(200, "Success!", $records);
                 return $data;
+            }
+
+            
+        }
+        else
+        {
+            $data = resultBuilder(404, "Not Found!", []);
+            return $data;
+        }
+    }
+    else
+    {
+        $data = resultBuilder(500, "Internal Server Error", []);
+        return $data;
+    }
+}
+function userImage($inputData){
+    global $conn;
+    $targetDir = SITE_ROOT."\usersImages\\"; 
+    if (!isset($inputData['token']))
+    {
+        $data = resultBuilder(500, "Incomplete Data!", []);
+        return $data;
+    }
+    $token = trim(mysqli_real_escape_string($conn, $inputData['token']));
+    $query = "SELECT * from users WHERE userToken = \"".$token."\"";
+    $query_result = mysqli_query($conn, $query);
+    if($query_result)
+    {
+        if(mysqli_num_rows($query_result) > 0)
+        {
+            $records = mysqli_fetch_all($query_result, MYSQLI_ASSOC)[0];
+            $username = $records['username'];
+            $query = "SELECT * from usersImages WHERE username = \"".$username."\"";
+            $query_result = mysqli_query($conn, $query);
+            if($query_result)
+            {
+                $imgName = mysqli_fetch_all($query_result, MYSQLI_ASSOC)[0]['imgName'];
+                $imgPath = $targetDir.$imgName;
+                $im = readfile($targetDir.$imgName);
+                return $im;
             }
 
             
