@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="form-container" [formGroup]="signupForm" (ngSubmit)="submit()">
+    <h1>Sign Up</h1>
+    <form>
+      <label for="username">Username</label>
+      <input type="text" id="username" name="username" formControlName="username">
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" formControlName="email">
+
+      <label for="pass">Password</label>
+      <input type="password" id="pass" name="pass" formControlName="pass">
+      
+      <label for="fullname">Fullname</label>
+      <input type="text" id="fullname" name="fullname" formControlName="fullname">
+
+      <label for="accountType">Account Type</label>
+      <select id="accountType" name="accountType" formControlName="accountType">
+        <option *ngFor="let t of accountTypes" [ngValue]="t.id">{{t.val}}</option>
+      </select>
+
+      <input type="file" style="display: none;" id="fileUploader" 
+             (change)="onFileSelected($event.target)">
+      <p>{{fileName}}</p> 
+      <button class="upload" id="imageData" name="imageData" 
+              (click)="document.getElementById('fileUploader').click()">
+        upload image
+      </button>
+             
+
+      <button type="submit">Sign Up</button>
+    </form>
+    <p>Already have an account? <a href="#" id="login-link">Login</a></p>
+  </div>
+</div>
